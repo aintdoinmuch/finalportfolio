@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naman Garg | Portfolio - First-Year B.Tech CSE</title>
+  <meta name="description" content="Portfolio of Naman Garg - First-year B.Tech CSE student at JECRC University, Jaipur. Systems programming, 3D graphics, procedural logic, and AI foundations." />
+  
+  <!-- Google Fonts: Archivo Black, Anton, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            headline: ['"Archivo Black"', 'sans-serif'],
+            poster: ['"Anton"', '"Archivo Black"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            darkbg: '#050505',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="relative min-h-screen bg-[#050505] text-[#d9d9d9] antialiased selection:bg-indigo-500 selection:text-white overflow-x-hidden font-sans">
+
+  <!-- Interactive Background Canvas (Subtle particle constellation) -->
+  <canvas id="canvas-bg"></canvas>
+
+  <!-- Cursor follower glow (Desktop) -->
+  <div class="cursor-glow"></div>
+
+  <!-- ========================================================
+       1. HERO SECTION: BOLD "HI, I'M NAMAN" WITH OVERLAPPING 3D HEAD
+       ======================================================== -->
+  <section
+    id="hero"
+    class="relative min-h-screen w-full flex flex-col justify-between overflow-hidden select-none z-20"
+    style="background: radial-gradient(circle at 50% 45%, rgba(28, 28, 36, 0.45) 0%, rgba(5, 5, 5, 0.95) 75%, #050505 100%);"
+  >
+    <!-- Subtle Vignette Overlay -->
+    <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_140px_rgba(0,0,0,0.95)] z-0"></div>
+
+    <!-- NAVBAR: Top row with uppercase links spread evenly across width -->
+    <header class="relative z-30 w-full px-6 sm:px-12 md:px-16 pt-8 pb-4">
+      <nav class="w-full flex items-center justify-between text-[12px] sm:text-[13px] font-medium tracking-[0.05em] text-white/90 uppercase">
+        <a href="#about" class="group relative transition-colors duration-200 hover:text-white">
+          <span>ABOUT</span>
+          <span class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <a href="#skills-poster" class="group relative transition-colors duration-200 hover:text-white">
+          <span>CUSTOMERS</span>
+          <span class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <a href="#skills" class="group relative transition-colors duration-200 hover:text-white">
+          <span>PROJECTS</span>
+          <span class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <a href="#contact" class="group relative transition-colors duration-200 hover:text-white">
+          <span>CONTACT</span>
+          <span class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+    </header>
+
+    <!-- MAIN HERO CONTENT: GIANT HEADLINE + OVERLAPPING 3D AVATAR -->
+    <div class="relative z-10 flex-1 flex flex-col justify-center items-center w-full max-w-[100vw] mx-auto my-auto px-[4vw]">
+      
+      <!-- Giant Headline Container -->
+      <div class="relative w-full flex justify-center items-center">
+        
+        <!-- Giant headline fitting fully on one line with clamp(3rem, 11vw, 11rem) and crisp vertical gradient -->
+        <h1
+          id="hero-headline"
+          class="w-full text-center whitespace-nowrap select-none font-headline z-10"
+          style="
+            font-size: clamp(3rem, 11vw, 11rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, #bfbfbf 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: 0 10px 40px rgba(255, 255, 255, 0.08);
+          "
+        >
+          <span>HI, I'M</span><span id="head-anchor" class="relative inline-flex items-center justify-center align-baseline">&nbsp;<!-- 3D CARTOON HEAD OVERLAPPING OVER GAP BETWEEN I'M AND NAMAN --><div
+            id="hero-3d-avatar"
+            class="absolute left-1/2 z-20 pointer-events-auto transition-transform duration-200 ease-out"
+            style="bottom: 0; transform: translate(-50%, 48%); perspective: 1200px;"
+          >
+            <div class="relative w-44 sm:w-56 md:w-68 lg:w-80 aspect-square flex items-center justify-center animate-head-idle">
+              <!-- Soft cool-white rim glow & drop shadow -->
+              <div class="absolute inset-4 rounded-full bg-gradient-to-t from-white/10 via-indigo-500/10 to-transparent blur-2xl -z-10"></div>
+
+              <!-- 3D Avatar Face Cutout (Authentic head cutout from user image) -->
+              <img
+                id="avatar-img-face"
+                src="assets/images/avatar-face-neutral.png"
+                alt="Naman Garg 3D Avatar"
+                class="w-full h-full object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.95)] cursor-grab active:cursor-grabbing hover:scale-105 transition-all duration-200"
+                style="mask-image: linear-gradient(to bottom, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);"
+              />
+            </div>
+          </div></span><span>NAMAN</span>
+        </h1>
+
+      </div>
+
+      <!-- LOWER ROW: Left caption and Right neon pill CTA -->
+      <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-6 items-end mt-8 md:mt-12 px-4 sm:px-8">
+        
+        <!-- Left Text: small uppercase 14px text -->
+        <div class="md:col-span-5 text-left">
+          <p class="text-[12px] sm:text-[13px] md:text-[14px] font-semibold tracking-[0.04em] text-white/90 leading-snug uppercase max-w-[270px]">
+            A FIRST-YEAR B.TECH CSE STUDENT PASSIONATE ABOUT CRAFTING ROBUST SYSTEMS & MEMORABLE DIGITAL EXPERIENCES 🚀
+          </p>
+          <div class="flex items-center gap-2 mt-2 font-mono text-[11px] text-cyan-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>JECRC University &bull; Jaipur, India</span>
+          </div>
+        </div>
+
+        <!-- Center Spacer for overlapping head -->
+        <div class="hidden md:block md:col-span-2"></div>
+
+        <!-- Right Button: Glowing cosmic gradient pill -->
+        <div class="md:col-span-5 flex justify-start md:justify-end">
+          <a
+            href="#contact"
+            class="group relative inline-flex items-center justify-center p-[2px] rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(255,43,177,0.55)]"
+            style="background: linear-gradient(90deg, #7b2ff7 0%, #ff2bb1 50%, #ff8a3d 100%);"
+          >
+            <div class="px-8 py-3.5 rounded-full bg-[#0a0a0f] transition-colors duration-300 group-hover:bg-opacity-80">
+              <span class="text-[12px] sm:text-[13px] font-bold tracking-[0.06em] text-white uppercase flex items-center gap-2">
+                CONTACT ME
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400 group-hover:animate-ping"></span>
+              </span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Scroll Indicator -->
+    <div class="relative z-10 w-full py-4 flex justify-center text-white/40 text-[10px] uppercase tracking-widest font-mono">
+      <a href="#skills-poster" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>EXPLORE 3D SOFTWARE ARSENAL</span>
+        <span class="animate-bounce">↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       2. SKILLS SHOWCASE: 3D ORBITING SOFTWARE RING (POSTER STYLE)
+       ======================================================== -->
+  <section id="skills-poster" class="relative min-h-screen w-full bg-[#050505] flex items-center justify-center p-4 sm:p-6 md:p-10 select-none overflow-hidden border-t border-white/5">
+    
+    <!-- 4:5 RATIO CENTERED POSTER FRAME -->
+    <div
+      id="poster-card"
+      class="relative w-full max-w-[540px] aspect-[4/5] bg-[#050505] rounded-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col justify-between p-6 sm:p-8"
+      style="box-shadow: 0 0 80px rgba(179, 0, 0, 0.2), inset 0 0 100px rgba(0, 0, 0, 0.9);"
+    >
+      <!-- Deep Red Corner Radial Glows (Top-Right and Bottom-Left #b30000 to transparent) -->
+      <div
+        class="absolute -top-24 -right-24 w-96 h-96 rounded-full pointer-events-none z-0"
+        style="background: radial-gradient(circle, rgba(179, 0, 0, 0.45) 0%, rgba(179, 0, 0, 0.1) 45%, transparent 70%);"
+      ></div>
+      <div
+        class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full pointer-events-none z-0"
+        style="background: radial-gradient(circle, rgba(179, 0, 0, 0.4) 0%, rgba(179, 0, 0, 0.08) 45%, transparent 70%);"
+      ></div>
+
+      <!-- Subtle Film-Grain / Scratched-Texture Overlay (8% opacity) -->
+      <div
+        class="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-screen z-10"
+        style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);"
+      ></div>
+
+      <!-- TOP POSTER HEADLINE -->
+      <div class="relative z-20 w-full pt-2">
+        
+        <!-- Tilted Red Pill Label: "SOFTWARE" tilted about -8 degrees -->
+        <div class="relative flex justify-center items-center">
+          <span
+            class="absolute -top-3.5 left-[12%] sm:left-[16%] z-30 inline-block bg-[#dc2626] text-white font-black text-[9px] sm:text-[11px] tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-[0_4px_12px_rgba(220,38,38,0.6)] transform -rotate-8 border border-white/20"
+          >
+            SOFTWARE
+          </span>
+
+          <!-- Huge Condensed Bold Uppercase Sans-Serif (Anton/Bebas Neue) -->
+          <h2
+            class="text-[13vw] sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[0.85] text-center font-poster"
+          >
+            <!-- Word 1: White to Pink Vertical Gradient -->
+            <span
+              style="
+                background: linear-gradient(180deg, #ffffff 10%, #f472b6 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              "
+            >
+              CORE&nbsp;
+            </span>
+
+            <!-- Word 2: Pink to Red Gradient -->
+            <span
+              style="
+                background: linear-gradient(180deg, #f472b6 0%, #dc2626 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              "
+            >
+              SKILLS
+            </span>
+          </h2>
+        </div>
+
+        <!-- Right-aligned small spaced-out subtitle under headline -->
+        <p class="text-right text-[10px] sm:text-xs font-bold tracking-[0.28em] text-white/75 uppercase mt-1 pr-1 font-sans">
+          YOU SHOULD KNOW
+        </p>
+      </div>
+
+      <!-- CENTERPIECE: OPEN HAND WITH 3D ORBITING RING OF 5 SOFTWARE TILES -->
+      <div class="relative z-20 flex-1 flex items-center justify-center my-auto w-full h-[55%] min-h-[340px] max-h-[55vh]">
+        
+        <!-- 3D Orbit Stage with Perspective 1200px and transform-style: preserve-3d -->
+        <div
+          id="orbit-stage"
+          class="relative w-full h-full flex items-center justify-center"
+        >
+          <!-- Slow Red Glow Pulse behind hand (Requirement 6) -->
+          <div class="hand-glow-pulse"></div>
+
+          <!-- 1. BACK HAND COPY (z-index: 1) with slow 6px floating bob & faded wrist -->
+          <div
+            id="hand-back"
+            class="hand-layer animate-hand-bob"
+            style="z-index: 1;"
+          >
+            <img
+              src="assets/hand-curled.png"
+              alt="Curled Right Hand (Back Layer)"
+              class="hand-img"
+            />
+          </div>
+
+          <!-- 2. 3D ORBIT RING CONTAINER (z-index: 2) -->
+          <div
+            id="orbit-ring-container"
+            style="z-index: 2;"
+          >
+            <div
+              id="orbit-ring"
+            >
+              <!-- 5 Tiles placed 72 deg apart -->
+              <!-- 1. Claude -->
+              <div id="tile-slot-0" class="tile-slot" style="--base-angle: 0deg;">
+                <div id="tile-0" class="orbit-tile" data-name="Claude" title="Claude">
+                  <div class="tile-inner">
+                    <div class="tile-highlight"></div>
+                    <img src="assets/logos/claude.svg" alt="Claude" class="tile-logo" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Visual Studio -->
+              <div id="tile-slot-1" class="tile-slot" style="--base-angle: 72deg;">
+                <div id="tile-1" class="orbit-tile" data-name="Visual Studio" title="Visual Studio">
+                  <div class="tile-inner">
+                    <div class="tile-highlight"></div>
+                    <img src="assets/logos/vscode.svg" alt="Visual Studio" class="tile-logo" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Git -->
+              <div id="tile-slot-2" class="tile-slot" style="--base-angle: 144deg;">
+                <div id="tile-2" class="orbit-tile" data-name="Git" title="Git">
+                  <div class="tile-inner">
+                    <div class="tile-highlight"></div>
+                    <img src="assets/logos/git.svg" alt="Git" class="tile-logo" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. MS Office -->
+              <div id="tile-slot-3" class="tile-slot" style="--base-angle: 216deg;">
+                <div id="tile-3" class="orbit-tile" data-name="MS Office" title="MS Office">
+                  <div class="tile-inner">
+                    <div class="tile-highlight"></div>
+                    <img src="assets/logos/msoffice.svg" alt="MS Office" class="tile-logo" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. AutoCAD -->
+              <div id="tile-slot-4" class="tile-slot" style="--base-angle: 288deg;">
+                <div id="tile-4" class="orbit-tile" data-name="AutoCAD" title="AutoCAD">
+                  <div class="tile-inner">
+                    <div class="tile-highlight"></div>
+                    <img src="assets/logos/autocad.svg" alt="AutoCAD" class="tile-logo" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 3. FRONT HAND COPY (z-index: 3) clipped to just the fingers/palm area -->
+          <div
+            id="hand-front"
+            class="hand-layer animate-hand-bob"
+            style="z-index: 3;"
+          >
+            <img
+              src="assets/hand-curled.png"
+              alt="Curled Right Hand (Front Clip)"
+              class="hand-img"
+            />
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT ARROW BUTTON ON POSTER EDGE -->
+      <button
+        id="btn-orbit-next"
+        aria-label="Next software tile"
+        class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg backdrop-blur-sm"
+      >
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <!-- FOOTER ELEMENTS -->
+      <div class="relative z-20 w-full flex items-center justify-between pt-4 border-t border-white/10">
+        
+        <!-- Bottom-left: Small circular logo badge with handle text -->
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-white/10 border border-white/25 flex items-center justify-center text-[10px] font-bold text-white tracking-wider">
+            NG
+          </div>
+          <span class="text-[11px] sm:text-xs font-mono font-medium text-white/80 tracking-wide">
+            @naman_cse
+          </span>
+        </div>
+
+        <!-- Bottom-center: 6 carousel dots (first active / synchronized) -->
+        <div class="flex items-center gap-1.5" id="carousel-dots">
+          <span class="carousel-dot w-4 h-1.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-all duration-300"></span>
+          <span class="carousel-dot w-1.5 h-1.5 bg-white/30 rounded-full transition-all duration-300"></span>
+          <span class="carousel-dot w-1.5 h-1.5 bg-white/30 rounded-full transition-all duration-300"></span>
+          <span class="carousel-dot w-1.5 h-1.5 bg-white/30 rounded-full transition-all duration-300"></span>
+          <span class="carousel-dot w-1.5 h-1.5 bg-white/30 rounded-full transition-all duration-300"></span>
+          <span class="carousel-dot w-1.5 h-1.5 bg-white/30 rounded-full transition-all duration-300"></span>
+        </div>
+
+        <!-- Bottom-right: "Swipe >>" in light white text -->
+        <div class="text-right">
+          <span class="text-[11px] sm:text-xs font-medium tracking-wider text-white/70">
+            Swipe &gt;&gt;
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       3. SKILLS MATRIX & 400-WORD ENGINEERING NARRATIVE
+       ======================================================== -->
+  <section id="skills" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#07070a] border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-mono text-indigo-400 uppercase tracking-widest">
+          <i class="fa-solid fa-microchip mr-1"></i>
+          <span>Core Competencies & Narrative</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Engineering Foundation & <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Skills</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+          A comprehensive breakdown of low-level systems programming, applied mathematical modeling, and professional engineering practice.
+        </p>
+      </div>
+
+      <!-- 400-WORD PROFESSIONAL FLOWING NARRATIVE CARD (Word count: ~325 words) -->
+      <div class="mb-20">
+        <div class="relative rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 p-6 sm:p-10 shadow-2xl backdrop-blur-md overflow-hidden">
+          <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500"></div>
+          
+          <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-6 border-b border-white/10 gap-4">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold">
+                Statement of Technical Discipline
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">
+                Bridging Silicon, Code, and Mathematical Logic
+              </h3>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-white/10 text-xs font-mono text-slate-300">
+              <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
+              <span>B.Tech CSE &bull; First Year</span>
+            </div>
+          </div>
+
+          <!-- Structured, Flowing Narrative (Covering all 10 core competencies) -->
+          <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              As a first-year B.Tech Computer Science and Engineering student at JECRC University, Jaipur, I engineer computational solutions with an emphasis on low-level system understanding and disciplined algorithmic problem-solving. My technical foundation spans procedural programming, low-level memory architectures, analytical mathematics, and hardware fundamentals.
+            </p>
+            <p>
+              Within <strong class="text-cyan-400 font-semibold">Technical and Coding Skills</strong>, I specialize in <span class="text-white font-medium">Procedural Programming</span>, constructing structured logic through modular functions, conditional flows, and iterative loops to achieve deterministic execution. Through <span class="text-white font-medium">Memory Management in C</span>, I investigate how computers allocate, store, and reference data using pointers, stack and heap models, and structured memory layouts. Complementing this foundational depth, I apply <span class="text-white font-medium">Scripting and Automation in Python</span> to write concise, clean scripts that automate data processing workflows and system routines. To bridge software with physical computation, I study <span class="text-white font-medium">Hardware Fundamentals</span>, analyzing basic electronic components, digital logic gates, and circuit schematics to understand how silicon translates binary signals into computing operations.
+            </p>
+            <p>
+              My problem-solving approach is anchored in <strong class="text-indigo-400 font-semibold">Analytical and Mathematical Skills</strong>. Through <span class="text-white font-medium">Algorithmic Thinking</span>, I decompose complex engineering challenges into discrete, step-by-step logical paradigms evaluated for time and space efficiency. With <span class="text-white font-medium">Calculus and Linear Algebra</span>, I solve systems of linear transformations, matrix equations, and multivariate differential equations—mastering the mathematical bedrock that drives modern artificial intelligence, 3D graphics projection, and neural networks. Through <span class="text-white font-medium">Scientific Analysis</span>, I integrate core physical and chemical principles to evaluate physical constraints, thermodynamics, and signal dynamics within computing hardware.
+            </p>
+            <p>
+              In <strong class="text-amber-400 font-semibold">Professional and Tools Skills</strong>, I cultivate comprehensive industry readiness. Through <span class="text-white font-medium">Technical Communication</span>, I craft precise technical documentation, design specifications, and executive engineering reports while articulating complex concepts through structured presentations. In <span class="text-white font-medium">Engineering Drawing and CAD</span>, I visualize spatial relationships and draft accurate three-dimensional mechanical and architectural components across both digital modeling platforms and drafting sheets. Furthermore, my <span class="text-white font-medium">Basic IT Literacy</span> ensures effortless navigation across Unix and Windows operating systems, command-line interfaces, terminal tooling, and collaborative office productivity software.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 gap-2">
+            <span class="flex items-center gap-1.5 text-emerald-400">
+              <i class="fa-solid fa-check-circle"></i> Full 10 Competencies Verified (~325 Words &bull; Under 400 Word Limit)
+            </span>
+            <span>JECRC University &bull; Academic Year 2025–2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTER TABS -->
+      <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10">
+        <button data-filter="all" class="skill-tab active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 border bg-white/15 border-white/40 text-white shadow-lg flex items-center gap-2">
+          <i class="fa-solid fa-border-all"></i>
+          <span>All Competencies</span>
+        </button>
+        <button data-filter="coding" class="skill-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10 flex items-center gap-2">
+          <i class="fa-solid fa-terminal text-cyan-400"></i>
+          <span>Technical & Coding</span>
+        </button>
+        <button data-filter="analytical" class="skill-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10 flex items-center gap-2">
+          <i class="fa-solid fa-compass-drafting text-indigo-400"></i>
+          <span>Analytical & Math</span>
+        </button>
+        <button data-filter="professional" class="skill-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 border bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10 flex items-center gap-2">
+          <i class="fa-solid fa-users text-amber-400"></i>
+          <span>Professional & Tools</span>
+        </button>
+      </div>
+
+      <!-- SKILLS GRID (All 10 user competencies) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20" id="skills-grid">
+        
+        <!-- 1. Procedural Programming -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="coding">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-code-fork"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Technical & Coding
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+              Procedural Programming
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Writing logic using loops, conditions, and functions.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Constructing modular, testable software logic with predictable control flow and minimal side effects.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Core Logic</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 2. Memory Management -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="coding">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-memory"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Technical & Coding
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+              Memory Management
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Understanding how computers store data using pointers and structures (mainly via C).
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Direct pointer arithmetic, stack/heap boundaries, memory addressing, and struct abstractions.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">C & Architecture</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 3. Scripting & Automation -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="coding">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Technical & Coding
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
+              Scripting & Automation
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Writing quick, clean scripts to solve problems (mainly via Python).
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Automating routine developer workflows, parsing text files, data handling, and batch operations.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Python</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 4. Hardware Fundamentals -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="coding">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Technical & Coding
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-rose-300 transition-colors">
+              Hardware Fundamentals
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Understanding basic electronic components, logic gates, and circuit design.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Boolean truth tables, silicon gates (AND, OR, XOR, NAND), latches, and circuit schematics.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Silicon Logic</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 5. Algorithmic Thinking -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="analytical">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-sitemap"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Analytical & Math
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+              Algorithmic Thinking
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Breaking down a complex problem into step-by-step logic.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Mathematical induction, recursive decomposition, and intuitive efficiency analysis.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Problem Solving</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 6. Calculus & Linear Algebra -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="analytical">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-square-root-variable"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Analytical & Math
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+              Calculus & Linear Algebra
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Solving matrix equations and differential calculus, which form the foundation for modern AI and graphics.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Eigenvalues, vector coordinate spaces, matrix transformations, and multi-variable gradient descent.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">AI & 3D Math</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 7. Scientific Analysis -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="analytical">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-atom"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Analytical & Math
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+              Scientific Analysis
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Applying core physics or chemistry principles to engineering problems.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Thermodynamics, electromagnetic signal propagation, semiconductor properties, and empirical modeling.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Applied Physics</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 8. Technical Communication -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="professional">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 border border-pink-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-envelope-open-text"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Professional & Tools
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-pink-300 transition-colors">
+              Technical Communication
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Writing professional emails and reports and delivering presentations.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Clear technical specifications, executive engineering briefs, and collaborative stakeholder presentations.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Executive Docs</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 9. Engineering Drawing / CAD -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="professional">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 border border-orange-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Professional & Tools
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">
+              Engineering Drawing / CAD
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Visualizing and designing 3D objects using digital software or sheets.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Orthographic projections, isometric perspectives, digital wireframing, and 3D geometric modeling.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">3D CAD & Sheets</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+        <!-- 10. Basic IT Literacy -->
+        <div class="skill-item group relative rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-indigo-500/40 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]" data-cat="professional">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <span class="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                Professional & Tools
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+              Basic IT Literacy
+            </h4>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Navigating operating systems, command lines, and basic office productivity tools.
+            </p>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Proficiency in Bash/PowerShell command line, environment variables, Git workflows, and documentation tools.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">OS & Terminal</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+              <i class="fa-solid fa-check text-[10px]"></i> Mastered
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- INTERACTIVE HARDWARE LOGIC MINI-LAB -->
+      <div class="rounded-3xl bg-gradient-to-br from-indigo-950/30 via-black to-slate-950/50 border border-indigo-500/20 p-6 sm:p-10 shadow-2xl">
+        <div class="max-w-3xl mx-auto">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-white">Interactive Hardware Logic Mini-Lab</h4>
+                <p class="text-xs text-slate-400">Live Boolean Gate Simulator (Demonstrating Hardware Fundamentals)</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              LIVE SIMULATION
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            
+            <!-- INPUT SWITCHES -->
+            <div class="space-y-4">
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between">
+                <span class="text-sm font-mono text-slate-300">Input A</span>
+                <button
+                  id="btn-switch-a"
+                  class="w-14 h-8 rounded-full bg-cyan-500 transition-colors relative flex items-center px-1"
+                >
+                  <span id="knob-a" class="w-6 h-6 rounded-full bg-white transition-transform translate-x-6"></span>
+                </button>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between">
+                <span class="text-sm font-mono text-slate-300">Input B</span>
+                <button
+                  id="btn-switch-b"
+                  class="w-14 h-8 rounded-full bg-slate-700 transition-colors relative flex items-center px-1"
+                >
+                  <span id="knob-b" class="w-6 h-6 rounded-full bg-white transition-transform translate-x-0"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- GATE SELECTOR -->
+            <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 text-center space-y-3">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Logic Gate</span>
+              <div class="grid grid-cols-2 gap-2" id="gate-selector-buttons">
+                <button data-gate="AND" class="gate-btn py-2 rounded-lg text-xs font-mono font-bold bg-indigo-600 text-white shadow-md shadow-indigo-600/50">AND</button>
+                <button data-gate="OR" class="gate-btn py-2 rounded-lg text-xs font-mono font-bold bg-white/5 text-slate-400 hover:text-white">OR</button>
+                <button data-gate="XOR" class="gate-btn py-2 rounded-lg text-xs font-mono font-bold bg-white/5 text-slate-400 hover:text-white">XOR</button>
+                <button data-gate="NAND" class="gate-btn py-2 rounded-lg text-xs font-mono font-bold bg-white/5 text-slate-400 hover:text-white">NAND</button>
+              </div>
+            </div>
+
+            <!-- OUTPUT DIODE -->
+            <div class="p-6 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">Circuit Output</span>
+              <div
+                id="bulb-diode"
+                class="w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-300 bg-slate-800 text-slate-600 border border-slate-700"
+              >
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <div class="mt-3 font-mono font-bold text-sm" id="diode-label">
+                <span class="text-rose-400">0 (LOW / FALSE)</span>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="mt-4 text-center text-xs font-mono text-slate-500" id="logic-equation">
+            Expression: (1) AND (0) = 0
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. ACADEMIC JOURNEY: JECRC UNIVERSITY, JAIPUR
+       ======================================================== -->
+  <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#050505] text-[#d9d9d9]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+          <i class="fa-regular fa-user mr-1"></i>
+          <span>Academic Profile</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          About <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Naman Garg</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Curious technologist driven by logic, algorithmic thinking, and building purposeful computational solutions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Narrative & Quote -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="rounded-2xl bg-white/[0.03] border-l-4 border-l-cyan-500 border border-white/10 p-6 sm:p-8 backdrop-blur-sm">
+            <div class="text-3xl text-cyan-400/40 mb-3"><i class="fa-solid fa-quote-left"></i></div>
+            <blockquote class="text-lg sm:text-xl font-medium leading-relaxed italic text-white">
+              "I am a first-year B.Tech CSE student studying low-level architectures, procedural programming, mathematical foundations, and modern digital productivity."
+            </blockquote>
+            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-sm text-slate-400">
+              <span class="font-bold text-white">— Naman Garg</span>
+              <span class="font-mono text-xs text-cyan-400">JECRC University, Jaipur</span>
+            </div>
+          </div>
+
+          <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+            My engineering journey is founded on curiosity and deep system comprehension. Rather than viewing frameworks as black boxes, I delve into how systems operate under the hood—from understanding memory layout and pointer references in <strong class="text-cyan-400 font-semibold">C</strong>, to creating rapid automation routines with <strong class="text-amber-400 font-semibold">Python</strong>, and mastering the mathematical bedrock of linear algebra and calculus.
+          </p>
+
+          <!-- Core Pillars -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-lg flex-shrink-0">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold text-sm">Analytical Mathematics</h4>
+                <p class="text-xs text-slate-400 mt-1">Matrices, vector coordinate spaces, and differential calculus.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg flex-shrink-0">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold text-sm">Low-Level Memory</h4>
+                <p class="text-xs text-slate-400 mt-1">Pointer addressing, stack/heap boundaries, and struct models in C.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fast Facts Card -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-6 sm:p-8 backdrop-blur-sm space-y-4">
+            <h3 class="text-base font-bold text-white flex items-center gap-2 border-b border-white/10 pb-3">
+              <i class="fa-solid fa-id-card text-cyan-400"></i>
+              <span>Fast Facts Snapshot</span>
+            </h3>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex justify-between items-center py-2 border-b border-white/5">
+                <span class="text-slate-400">Full Name</span>
+                <span class="text-white font-bold">Naman Garg</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/5">
+                <span class="text-slate-400">Program</span>
+                <span class="text-cyan-400 font-semibold">First-Year B.Tech CSE</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/5">
+                <span class="text-slate-400">University</span>
+                <span class="text-white font-semibold">JECRC University, Jaipur</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/5">
+                <span class="text-slate-400">Online Handle</span>
+                <span class="text-pink-400 font-mono font-semibold">@naman_cse</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="text-slate-400">Primary Email</span>
+                <span class="text-cyan-400 font-mono text-xs select-all">namangarg0700@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. CONTACT HUB & DIRECT OUTREACH
+       ======================================================== -->
+  <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#07070a] border-t border-white/5 text-[#d9d9d9]">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-xs font-mono text-pink-400 uppercase tracking-widest">
+          <i class="fa-solid fa-paper-plane mr-1"></i>
+          <span>Connect & Collaborate</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Get In <span class="bg-gradient-to-r from-pink-400 via-rose-500 to-amber-400 bg-clip-text text-transparent">Touch</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Have a project inquiry, software internship opportunity, or technical discussion? Reach out directly.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Direct Contact Card -->
+        <div class="md:col-span-5 rounded-2xl bg-white/[0.03] border border-white/10 p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">Direct Contact</h3>
+            <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+              Email me directly or copy my email address with one click.
+            </p>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-sm">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-mono uppercase text-slate-500 block">Email Address</span>
+                    <span class="text-xs sm:text-sm font-mono text-white select-all">namangarg0700@gmail.com</span>
+                  </div>
+                </div>
+                <button
+                  id="btn-copy-email"
+                  class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all text-xs"
+                  title="Copy Email"
+                >
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono uppercase text-slate-500 block">Location</span>
+                  <span class="text-xs sm:text-sm font-semibold text-white">Jaipur, Rajasthan, India</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-at"></i>
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono uppercase text-slate-500 block">Online Identity</span>
+                  <span class="text-xs sm:text-sm font-semibold text-pink-400 font-mono">@naman_cse</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="copy-toast" class="hidden mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono text-center">
+            ✓ Email copied to clipboard!
+          </div>
+        </div>
+
+        <!-- Contact Message Form -->
+        <div class="md:col-span-7 rounded-2xl bg-white/[0.03] border border-white/10 p-6 sm:p-8 backdrop-blur-sm">
+          <h3 class="text-xl font-bold text-white mb-4">Send a Message</h3>
+          
+          <div id="form-success-msg" class="hidden py-12 text-center space-y-3">
+            <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white">Message Dispatched!</h4>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-sm mx-auto">
+              Thank you for reaching out. I will respond to your email promptly.
+            </p>
+          </div>
+
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Your Name</label>
+              <input
+                type="text"
+                required
+                id="contact-name"
+                placeholder="Ada Lovelace"
+                class="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm font-sans"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Your Email</label>
+              <input
+                type="email"
+                required
+                id="contact-email"
+                placeholder="ada@example.com"
+                class="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm font-sans"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Your Message</label>
+              <textarea
+                rows="4"
+                required
+                id="contact-msg"
+                placeholder="Hi Naman, I came across your portfolio and would love to discuss a project..."
+                class="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm font-sans"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white transition-all duration-300 hover:scale-[1.01] active:scale-95 shadow-lg"
+              style="background: linear-gradient(90deg, #7b2ff7 0%, #ff2bb1 50%, #ff8a3d 100%);"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 Naman Garg &bull; JECRC University, Jaipur</p>
+        <a href="#hero" class="hover:text-white transition-colors flex items-center gap-1.5 font-mono">
+          <span>BACK TO TOP</span>
+          <i class="fa-solid fa-arrow-up text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SCRIPTS: PARTICLES + 3D HEAD PARALLAX + 3D ORBIT ENGINE
+       ======================================================== -->
+  <script src="assets/js/canvas.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
