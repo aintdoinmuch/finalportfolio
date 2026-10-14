@@ -26,8 +26,8 @@
 
     function HeroSection({
       name = "NAMAN",
-      subtitle = "A B.TECH STUDENT PASSIONATE ABOUT CRAFTING BOLD AND MEMORABLE PROJECTS ✊",
-      avatarUrl = "assets/images/avatar-3d.jpg"
+      subtitle = "A FIRST-YEAR B.TECH CSE STUDENT PASSIONATE ABOUT CRAFTING ROBUST SYSTEMS & MEMORABLE DIGITAL EXPERIENCES 🚀",
+      avatarUrl = "./assets/images/avatar-face-neutral.png"
     }) {
       const containerRef = useRef(null);
       const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, transX: 0, transY: 0 });
@@ -113,6 +113,15 @@
 
                   <img
                     src={avatarUrl}
+                    onError={(e) => {
+                      if (!e.target.dataset.fallback) {
+                        e.target.dataset.fallback = 1;
+                        e.target.src = './assets/images/avatar-3d.jpg';
+                      } else if (!e.target.dataset.fallback2) {
+                        e.target.dataset.fallback2 = 1;
+                        e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='45%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23818cf8'/%3E%3Cstop offset='100%25' stop-color='%23312e81'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='100' cy='100' r='90' fill='url(%23g)'/%3E%3Ctext x='100' y='115' font-family='sans-serif' font-size='60' font-weight='900' fill='white' text-anchor='middle'%3ENG%3C/text%3E%3C/svg%3E";
+                      }
+                    }}
                     alt={`${name} 3D Avatar`}
                     className="w-full h-full object-cover object-center rounded-3xl drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] cursor-grab active:cursor-grabbing hover:scale-105 transition-transform duration-300"
                     style={{
